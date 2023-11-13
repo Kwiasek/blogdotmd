@@ -8,6 +8,7 @@ import Contact from "./components/Contact.jsx";
 import Admin from "./components/Admin.jsx";
 import PostsContext from "./context/PostsContext.jsx";
 import posts from "./posts.json";
+import Post from "./components/Post.jsx";
 
 if (!localStorage.getItem("posts")) {
   localStorage.setItem("posts", JSON.stringify(posts));
@@ -27,6 +28,17 @@ const router = createBrowserRouter([
         <Posts />
       </PostsContext.Provider>
     ),
+  },
+  {
+    path: "/posts/:postId",
+    element: (
+      <PostsContext.Provider value={blogPosts}>
+        <Post />
+      </PostsContext.Provider>
+    ),
+    loader: ({ params }) => {
+      return params.postId;
+    },
   },
   {
     path: "/contact",

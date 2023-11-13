@@ -1,0 +1,37 @@
+#content {
+  p {
+    font-size: 1rem;
+    letter-spacing: 0.15rem;
+  }
+
+  h1 {
+    font-size: 1.875rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  a {
+    text-decoration: underline;
+    color: rgb(190, 128, 190);
+  }
+  pre {
+    code {
+      display: block;
+      text-wrap: wrap;
+      background: #f2f2f2;
+      color: black;
+    }
+  }
+  ul {
+    li {
+      list-style-type: disc;
+      margin-left: 1.5rem;
+    }
+  }
+}
