@@ -1,0 +1,29 @@
+:root {
+    --bg-color: #333;
+    --text-color: #ddd
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.hero {
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 768px) {
+    .hero {
+        background-image: url('../assets/hero-sm.svg');
+        background-size: 100%;
+    }
+}
+
+.hero {
+    background-image: url('../assets/hero-lg.svg');
+    background-clip: ;
+}

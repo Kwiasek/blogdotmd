@@ -1,0 +1,15 @@
+{"posts": [
+    {
+        "id": 1,
+        "title": "Astro, prerendering a single component in a SSR page",
+        "date": "Oct 30, 2023",
+        "content": "I had a server-rendered Astro page and I was doing a quite intensive calculation on it. It ran on every page load."
+    },
+    {
+        "id": 2,
+        "title": "Astro, prerendering a single component in a SSR page",
+        "date": "Oct 30, 2023",
+        "content": "I had a server-rendered Astro page and I was doing a quite intensive calculation on it. It ran on every page load."
+    }
+]
+}
