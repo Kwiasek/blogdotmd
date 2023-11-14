@@ -30,7 +30,7 @@ const Post = () => {
             <h1 className="text-3xl font-bold">{blogPost.title}</h1>
             <span className="text-md text-gray-400">{blogPost.date}</span>
             <div
-              className="max-w-prose mt-8 flex flex-col gap-5"
+              className="max-w-[90vw] flex-wrap md:max-w-prose mt-8 flex flex-col gap-5"
               id="content"
             ></div>
           </article>
