@@ -3,6 +3,7 @@
     max-width: calc(100vw - 30px);
   }
   p {
+    overflow: auto;
     font-size: 1rem;
     letter-spacing: 0.15rem;
     word-wrap: break-word;
@@ -40,5 +41,7 @@
   }
   img {
     display: block;
+    max-width: 100%;
+    overflow: hidden;
   }
 }

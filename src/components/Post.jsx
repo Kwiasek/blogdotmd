@@ -1,21 +1,24 @@
-import { useLoaderData } from "react-router-dom";
 import { BsArrow90DegLeft } from "react-icons/bs";
 import Navbar from "./Navbar";
-import { useContext, useEffect } from "react";
-import PostsContext from "../context/PostsContext";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import "./Post.scss";
+import { useSelector } from "react-redux";
 import DOMPurify from "dompurify";
 import { marked } from "marked";
-import "./Post.scss";
+import { useEffect } from "react";
+
+const selectPost = (state) => state.posts.value.posts;
 
 const Post = () => {
-  const id = useLoaderData();
-  const blogPosts = JSON.parse(useContext(PostsContext));
-  const blogPost = blogPosts.posts.find((post) => post.id == id);
-  const blogContent = DOMPurify.sanitize(marked.parse(blogPost.content));
+  const postId = useLoaderData();
+  const blogPosts = useSelector(selectPost);
+  const blogPost = blogPosts.find((post) => postId == post.id);
+
   useEffect(() => {
-    document.getElementById("content").innerHTML = blogContent;
-  }, [id]);
+    document.querySelector("#content").innerHTML = DOMPurify.sanitize(
+      marked.parse(blogPost.content)
+    );
+  }, [postId, blogPost.content]);
   return (
     <div>
       <Navbar />
@@ -30,7 +33,7 @@ const Post = () => {
             <h1 className="text-3xl font-bold">{blogPost.title}</h1>
             <span className="text-md text-gray-400">{blogPost.date}</span>
             <div
-              className="max-w-[90vw] flex-wrap md:max-w-prose mt-8 flex flex-col gap-5"
+              className="max-w-[90vw] flex-wrap md:max-w-prose mt-8 flex flex-col gap-3"
               id="content"
             ></div>
           </article>

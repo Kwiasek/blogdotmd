@@ -6,15 +6,9 @@ import Posts from "./components/Posts.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Contact from "./components/Contact.jsx";
 import Admin from "./components/Admin.jsx";
-import PostsContext from "./context/PostsContext.jsx";
-import posts from "./posts.json";
 import Post from "./components/Post.jsx";
-
-if (!localStorage.getItem("posts")) {
-  localStorage.setItem("posts", JSON.stringify(posts));
-}
-
-const blogPosts = localStorage.getItem("posts");
+import { Provider } from "react-redux";
+import store from "./state/store.js";
 
 const router = createBrowserRouter([
   {
@@ -23,19 +17,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/posts",
-    element: (
-      <PostsContext.Provider value={blogPosts}>
-        <Posts />
-      </PostsContext.Provider>
-    ),
+    element: <Posts />,
   },
   {
     path: "/posts/:postId",
-    element: (
-      <PostsContext.Provider value={blogPosts}>
-        <Post />
-      </PostsContext.Provider>
-    ),
+    element: <Post />,
     loader: ({ params }) => {
       return params.postId;
     },
@@ -52,6 +38,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );

@@ -1,11 +1,11 @@
+import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
-import { useContext } from "react";
-import PostsContext from "../context/PostsContext";
 import { Link } from "react-router-dom";
 
+const selectPosts = (state) => state.posts.value.posts;
+
 const Posts = () => {
-  const blogPosts = JSON.parse(useContext(PostsContext));
-  const sortedAscendingBlogPosts = blogPosts.posts.reverse();
+  const posts = useSelector(selectPosts);
   return (
     <>
       <Navbar />
@@ -24,8 +24,8 @@ const Posts = () => {
           . I only use them as example to showcase my programming skills, and I
           do not have any benefits from pasting in them here.
         </p>
-        {sortedAscendingBlogPosts &&
-          sortedAscendingBlogPosts.map((blogPost) => {
+        {posts &&
+          posts.map((blogPost) => {
             return (
               <Link
                 key={blogPost.id}
