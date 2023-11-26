@@ -9,15 +9,18 @@ import Admin from "./components/Admin.jsx";
 import Post from "./components/Post.jsx";
 import { Provider } from "react-redux";
 import store from "./state/store.js";
+import Error from "./components/Error.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <Error />,
   },
   {
     path: "/posts",
     element: <Posts />,
+    errorElement: <Error />,
   },
   {
     path: "/posts/:postId",
@@ -25,14 +28,17 @@ const router = createBrowserRouter([
     loader: ({ params }) => {
       return params.postId;
     },
+    errorElement: <Error />,
   },
   {
     path: "/contact",
     element: <Contact />,
+    errorElement: <Error />,
   },
   {
     path: "/admin",
     element: <Admin />,
+    errorElement: <Error />,
   },
 ]);
 

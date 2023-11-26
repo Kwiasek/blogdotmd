@@ -6,6 +6,7 @@ const selectPosts = (state) => state.posts.value.posts;
 
 const Posts = () => {
   const posts = useSelector(selectPosts);
+  const invertedPosts = posts.reverse();
   return (
     <>
       <Navbar />
@@ -24,8 +25,8 @@ const Posts = () => {
           . I only use them as example to showcase my programming skills, and I
           do not have any benefits from pasting in them here.
         </p>
-        {posts &&
-          posts.map((blogPost) => {
+        {invertedPosts &&
+          invertedPosts.map((blogPost) => {
             return (
               <Link
                 key={blogPost.id}
