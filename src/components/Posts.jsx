@@ -2,11 +2,11 @@ import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 
-const selectPosts = (state) => state.posts.value.posts;
+const selectPosts = (state) => state.value.posts;
 
 const Posts = () => {
   const posts = useSelector(selectPosts);
-  const invertedPosts = posts.reverse();
+  const reversed = [...posts].reverse();
   return (
     <>
       <Navbar />
@@ -25,8 +25,8 @@ const Posts = () => {
           . I only use them as example to showcase my programming skills, and I
           do not have any benefits from pasting in them here.
         </p>
-        {invertedPosts &&
-          invertedPosts.map((blogPost) => {
+        {reversed &&
+          reversed.map((blogPost) => {
             return (
               <Link
                 key={blogPost.id}

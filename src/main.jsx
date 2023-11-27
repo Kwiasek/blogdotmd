@@ -10,6 +10,7 @@ import Post from "./components/Post.jsx";
 import { Provider } from "react-redux";
 import store from "./state/store.js";
 import Error from "./components/Error.jsx";
+import Edit from "./components/Edit.jsx";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,13 @@ const router = createBrowserRouter([
     path: "/admin",
     element: <Admin />,
     errorElement: <Error />,
+  },
+  {
+    path: "/edit/:postId",
+    element: <Edit />,
+    loader: ({ params }) => {
+      return params.postId;
+    },
   },
 ]);
 

@@ -7,7 +7,7 @@ import DOMPurify from "dompurify";
 import { marked } from "marked";
 import { useEffect } from "react";
 
-const selectPost = (state) => state.posts.value.posts;
+const selectPost = (state) => state.value.posts;
 
 const Post = () => {
   const postId = useLoaderData();
