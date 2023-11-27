@@ -1,8 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import posts from "../posts.json";
 
+if (!localStorage.getItem("posts")) {
+  localStorage.setItem("posts", JSON.stringify(posts));
+}
+
 const initialState = {
-  value: posts,
+  value: JSON.parse(localStorage.getItem("posts")),
 };
 
 export const postsSlice = createSlice({
@@ -15,6 +19,9 @@ export const postsSlice = createSlice({
           return post;
         }
       });
+      for (let i = 0; i < newState.length; i++) {
+        newState[i].id = i + 1;
+      }
       state.value.posts = newState;
     },
     addNewPost(state) {

@@ -30,7 +30,10 @@ const Edit = () => {
   const handleChangeContent = (e) => {
     setContent(e.target.value);
   };
-
+  const state = useSelector((state) => state.value);
+  useEffect(() => {
+    localStorage.setItem("posts", JSON.stringify(state));
+  }, [state]);
   useEffect(() => {
     document.querySelector("#show").innerHTML = DOMPurify.sanitize(
       marked.parse(content)
@@ -45,9 +48,10 @@ const Edit = () => {
           <div id="edit" className="flex flex-col gap-2 w-1/2 p-2">
             <button
               className="px-3 py-2 bg-green-600 text-xl rounded-lg"
-              onClick={() =>
-                dispatch(editPost({ id: postId, title, date, content }))
-              }
+              onClick={() => {
+                dispatch(editPost({ id: postId, title, date, content }));
+                alert("Saved!");
+              }}
             >
               Save
             </button>
