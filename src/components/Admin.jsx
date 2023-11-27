@@ -30,10 +30,13 @@ const Admin = () => {
         {reversed &&
           reversed.map((post) => {
             return (
-              <div key={post.id} className="py-1 underline cursor-pointer">
+              <div
+                key={post.id}
+                className="py-1 underline px-6 flex justify-between md:justify-center w-full items-center md:justify-normal"
+              >
                 <Link to={`/edit/${post.id}`}>{post.title}</Link>
                 <button
-                  className="mx-2 px-3 py-2 bg-red-700 text-black"
+                  className="mx-2 px-3 py-2 bg-red-700 text-black h-10 rounded-md"
                   onClick={() => {
                     dispatch(removePost(post.id));
                   }}
