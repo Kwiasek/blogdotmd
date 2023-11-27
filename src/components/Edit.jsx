@@ -44,49 +44,63 @@ const Edit = () => {
     <div>
       <Navbar />
       {post && (
-        <div className="flex w-screen">
-          <div id="edit" className="flex flex-col gap-2 w-1/2 p-2">
-            <button
-              className="px-3 py-2 bg-green-600 text-xl rounded-lg"
-              onClick={() => {
-                dispatch(editPost({ id: postId, title, date, content }));
-                alert("Saved!");
-              }}
-            >
-              Save
-            </button>
-            <label htmlFor="title" className="text-xl font-bold">
-              Title:
-            </label>
-            <input
-              type="text"
-              value={title}
-              onChange={handleChangeTitle}
-              className="py-3 px-2 w-full bg-slate-700"
-              id="title"
-            ></input>
-            <label htmlFor="date" className="text-xl font-bold">
-              Date:
-            </label>
-            <input
-              type="date"
-              className="py-3 px-2 w-full bg-slate-700"
-              id="date"
-              value={date}
-              onChange={handleChangeDate}
-            ></input>
-            <label htmlFor="content" className="text-xl font-bold">
-              Content:
-            </label>
-            <textarea
-              id="content"
-              className="h-full w-full bg-slate-700 p-2"
-              rows={20}
-              value={content}
-              onChange={handleChangeContent}
-            ></textarea>
+        <div className="flex flex-col md:flex-row w-screen p-6 md:px-0">
+          <div id="edit" className="flex md:flex-col gap-2 w-full md:w-1/2 p-2">
+            <div className="flex flex-col gap-2 w-full">
+              <button
+                className="px-3 py-2 bg-green-600 text-xl rounded-lg"
+                onClick={() => {
+                  if (title) {
+                    dispatch(editPost({ id: postId, title, date, content }));
+                    alert("Saved!");
+                  } else {
+                    alert("Title can't be blank");
+                  }
+                }}
+              >
+                Save
+              </button>
+              <a
+                href="https://www.markdownguide.org/cheat-sheet/#basic-syntax"
+                rel="noreferrer"
+                target="_blank"
+                className="text-xl underline"
+              >
+                Markdown cheat sheet
+              </a>
+              <label htmlFor="title" className="text-xl font-bold">
+                Title:
+              </label>
+              <input
+                type="text"
+                value={title}
+                onChange={handleChangeTitle}
+                className="py-3 px-2 w-full bg-slate-700"
+                id="title"
+              ></input>
+              <label htmlFor="date" className="text-xl font-bold">
+                Date:
+              </label>
+              <input
+                type="date"
+                className="py-3 px-2 w-full bg-slate-700"
+                id="date"
+                value={date}
+                onChange={handleChangeDate}
+              ></input>
+              <label htmlFor="content" className="text-xl font-bold">
+                Content:
+              </label>
+              <textarea
+                id="content"
+                className="h-full w-full bg-slate-700 p-2"
+                rows={20}
+                value={content}
+                onChange={handleChangeContent}
+              ></textarea>
+            </div>
           </div>
-          <article className="flex flex-col p-2">
+          <article className="flex flex-col p-2 w-full md:w-1/2">
             <h1 className="text-3xl font-bold">{title}</h1>
             <span className="text-md text-gray-400">{date}</span>
             <div

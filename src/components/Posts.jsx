@@ -10,7 +10,7 @@ const Posts = () => {
   return (
     <>
       <Navbar />
-      <div className="w-screen flex flex-col items-center justify-center pt-20">
+      <div className="md:w-screen flex flex-col items-center px-8 md:px-0 justify-center pt-20">
         <p className="max-w-prose text-center">
           <span className="font-bold">DISCLAIMER</span>: All these posts comes
           from{" "}
